@@ -2,8 +2,8 @@
 module.exports = function($) {
     "use strict";
     var CBPP_Slider = {};
-    require("jquery-ui/ui/widget_commonJS.js")($);
-    require("jquery-ui-touch-punch/jquery.ui.touch-punch_commonJS.js")($);
+    require("./node_modules/jquery-ui-dist/jquery-ui_commonJS.js")($);
+    require("./node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch_commonJS.js")($);
     require("./cbpp_slider.css");
     require("jquery-ui/themes/base/base.css");
     CBPP_Slider.Slider = function(selector, options) {
