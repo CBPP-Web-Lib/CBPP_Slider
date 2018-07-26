@@ -5,6 +5,7 @@ module.exports = function($) {
     require("jquery-ui/ui/widget_commonJS.js")($);
     require("jquery-ui-touch-punch/jquery.ui.touch-punch_commonJS.js")($);
     require("./cbpp_slider.css");
+    require("jquery-ui/themes/base/base.css");
     CBPP_Slider.Slider = function(selector, options) {
         if (typeof(options)==="undefined") {
             options = {};
