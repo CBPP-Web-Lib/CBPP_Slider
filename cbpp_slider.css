@@ -1,3 +1,7 @@
+.cbpp_slider, .cbpp_slider * {
+    cursor:ew-resize;
+}
+
 .cbpp_slider .main-line {
     height:1px;
     background-color:#000;
@@ -23,7 +27,7 @@
 
 .cbpp_slider .ui-slider-handle .cbpp-slider-handle {
     position:relative;
-    top:-6px;
+    top:5px;
     left:5px;
     height:12px;
     width:12px !important;
