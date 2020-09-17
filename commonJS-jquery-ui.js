@@ -2,8 +2,12 @@ try {
 
   var fs = require("fs");
   function fixFile(path, $) {
-    var file = fs.readFileSync(path);
-    fs.writeFileSync(path.replace(".js","") + "_commonJS.js", "module.exports=function(" + $ + ") {" + file + "};");
+    try {
+      var file = fs.readFileSync(path);
+      fs.writeFileSync(path.replace(".js","") + "_commonJS.js", "module.exports=function(" + $ + ") {" + file + "};");
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   /*get jquery ui*/
@@ -55,6 +59,6 @@ try {
   });
 
 } catch (ex) {
-  console.error(ex);
+  console.log(ex);
 }
 
