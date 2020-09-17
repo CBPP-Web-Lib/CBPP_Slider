@@ -2,10 +2,13 @@
 module.exports = function($) {
     "use strict";
     var CBPP_Slider = {};
-    require("./jquery-ui-1.12.1.custom/jquery-ui.min_commonJS.js")($);
-    require("./jquery-ui.touch_punch.min_commonJS.js")($);
+    var current_jQuery = window.jQuery;
+    window.jQuery = $;
+    require("./jquery-ui-1.12.1/jquery-ui.min.js"); 
+    require("./jquery-ui.touch_punch.min.js");
     require("./cbpp_slider.css");
-    require("./jquery-ui-1.12.1.custom/jquery-ui.min.css");
+    require("./jquery-ui-1.12.1/jquery-ui.min.css");
+    window.jQuery = current_jQuery;
     CBPP_Slider.Slider = function(selector, options) {
         if (typeof(options)==="undefined") {
             options = {};

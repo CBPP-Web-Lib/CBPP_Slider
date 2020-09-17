@@ -1,21 +1,13 @@
 try {
 
   var fs = require("fs");
-  function fixFile(path, $) {
-    try {
-      var file = fs.readFileSync(path);
-      fs.writeFileSync(path.replace(".js","") + "_commonJS.js", "module.exports=function(" + $ + ") {" + file + "};");
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
 
   /*get jquery ui*/
 
   const https = require("https");
   const querystring = require("querystring");
   const unzip = require("extract-zip");
-  var jquery_ui_write_stream = fs.createWriteStream(__dirname + "/jquery-ui.zip");
+  var jquery_ui_write_stream = fs.createWriteStream(__dirname + "/jquery-ui-1.12.1.zip");
   var postData = querystring.stringify({
     "version": "1.12.1",
     "widget": "on",
@@ -26,10 +18,10 @@ try {
     "theme-folder-name": "no-theme"
   });
   var jquery_ui_req = https.request({
-    host: 'download.jqueryui.com',
+    host: 'jqueryui.com',
     port: 443,
-    method: 'POST',
-    path: '/download',
+    method: 'GET',
+    path: '/resources/download/jquery-ui-1.12.1.zip',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': postData.length
@@ -39,8 +31,8 @@ try {
       jquery_ui_write_stream.write(d);
     });
     res.on("end", () => {
-      unzip(__dirname + "/jquery-ui.zip", {dir: __dirname}, (err) => {
-        fixFile(__dirname + "/jquery-ui-1.12.1.custom/jquery-ui.min.js","jQuery");
+      unzip(__dirname + "/jquery-ui-1.12.1.zip", {dir: __dirname}, (err) => {
+        console.log("retrieved jquery ui");
       });
     });
   });
@@ -54,7 +46,7 @@ try {
       touch_punch_stream.write(d);
     });
     res.on("end", () => {
-      fixFile(__dirname + "/jquery-ui.touch_punch.min.js", "jQuery");
+      console.log("got touch punch");
     });
   });
 
